@@ -48,19 +48,28 @@
             font-size: 36px;
         }
 
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px;
+        }
+
         .project {
-            margin: 20px auto;
+            margin: 20px;
             padding: 15px;
-            max-width: 800px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            background: white;
+            width: 300px;
+            text-align: center;
+            background-color: white;
         }
 
         .project img {
             width: 100%;
             height: auto;
             border-radius: 8px;
+            margin-bottom: 10px;
         }
 
         footer {
@@ -85,10 +94,49 @@
         <h1>Projects</h1>
     </header>
 
-    <div class="project">
-        <img src="project1.jpg" alt="Project 1">
-        <h3>Assembly Rectangular Moving in DosBox</h3>
-        <p>Assembly implementation for rectangular object movement in DosBox.</p>
+    <!-- Projects -->
+    <div class="projects-container">
+        <div class="project">
+            <img src="assembly-dosbox.jpg" alt="Assembly Rectangular Moving">
+            <h3>Assembly Rectangular Moving in DosBox</h3>
+            <p>Assembly implementation for rectangular object movement in DosBox.</p>
+            <a href="https://github.com/Oxuzhan/Assembly-rectangular-moving-in-DosBox" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <img src="preprocessing-ml.jpg" alt="Preprocessing Parts in ML">
+            <h3>Preprocessing Parts in Machine Learning</h3>
+            <p>Techniques for preprocessing data in machine learning pipelines.</p>
+            <a href="https://github.com/Oxuzhan/Preprocessing-Parts-in-Machine-Learning" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <img src="deep-learning-app.jpg" alt="Deep Learning Application">
+            <h3>Deep Learning and Machine Learning Application</h3>
+            <p>Applications showcasing deep learning and machine learning techniques.</p>
+            <a href="https://github.com/Oxuzhan/Deep-Learning-and-Machine-Learning-Application" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <img src="cnn-interference.jpg" alt="Interference Detection">
+            <h3>Interference Detection with CNN</h3>
+            <p>A project to detect interference using CNN-based deep learning.</p>
+            <a href="https://github.com/Oxuzhan/Interference-Detection-with-CNN-Deep-Learning-Algorithm" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <img src="diabetic-retinopathy.jpg" alt="Diabetic Retinopathy Detection">
+            <h3>Diabetic Retinopathy Detection</h3>
+            <p>Hybrid models using EfficientNet and DenseNet for diabetic retinopathy detection.</p>
+            <a href="https://github.com/Oxuzhan/Diabetic-retinopathy-in-deep-learning-models-efficientnet-densenet-" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <img src="fastapi-app.jpg" alt="FastAPI Application">
+            <h3>FastAPI Application</h3>
+            <p>Implementation of FastAPI for enterprise-level solutions.</p>
+            <a href="https://github.com/Oxuzhan/FastAPI-Application" target="_blank">View on GitHub</a>
+        </div>
     </div>
 
     <footer>
