@@ -53,9 +53,27 @@
             padding: 40px;
         }
 
-        .content p {
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .contact-item img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .contact-item a {
             font-size: 18px;
-            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -81,9 +99,18 @@
     </header>
 
     <div class="content">
-        <p><strong>Email:</strong> oguzhanatmca77@gmail.com</p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/Oxuzhan" target="_blank">https://github.com/Oxuzhan</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/o%C4%9Fuzhan-atmaca-a87586193/" target="_blank">https://www.linkedin.com/in/o%C4%9Fuzhan-atmaca-a87586193/</a></p>
+        <div class="contact-item">
+            <img src="gmail-icon.png" alt="Gmail">
+            <a href="mailto:oguzhanatmca77@gmail.com">oguzhanatmca77@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <img src="linkedin-icon.png" alt="LinkedIn">
+            <a href="https://www.linkedin.com/in/o%C4%9Fuzhan-atmaca-a87586193/" target="_blank">LinkedIn Profile</a>
+        </div>
+        <div class="contact-item">
+            <img src="github-icon.png" alt="GitHub">
+            <a href="https://github.com/Oxuzhan" target="_blank">GitHub Profile</a>
+        </div>
     </div>
 
     <footer>
