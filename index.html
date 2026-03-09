@@ -3,117 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Oğuzhan Atmaca</title>
+    <title>Oğuzhan Atmaca | AI & Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
         }
 
         nav {
-            background-color: #343a40;
-            color: white;
-            padding: 10px 0;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
         }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+        nav ul li { margin: 0 25px; }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
+        nav ul li a:hover { color: var(--primary); }
 
         header {
             text-align: center;
-            padding: 50px 20px;
-            background-color: #007bff;
+            padding: 100px 20px 60px;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
             color: white;
         }
 
         header h1 {
-            font-size: 36px;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
         header p {
-            font-size: 18px;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .content {
-            text-align: center;
+        .container {
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+
+        .profile-card {
+            background: white;
             padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .content img {
-            width: 200px;
-            height: auto;
+        .profile-card img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            object-fit: cover;
         }
 
-        .content p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-top: 20px;
+        .bio-text {
+            font-size: 1.15rem;
+            color: #334155;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #e2e8f0;
+            color: #475569;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #343a40;
-            color: white;
+            padding: 40px;
+            background-color: var(--dark);
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">Experience</a></li>
+            <li><a href="projects.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Header -->
     <header>
-        <h1>Welcome to My Personal Website</h1>
-        <p>I am Oğuzhan Atmaca, an IT and Machine Learning Specialist.</p>
+        <h1>Oğuzhan Atmaca</h1>
+        <p>Deep Learning | Signal Processing | Software Engineering</p>
     </header>
 
-    <!-- Content -->
-    <div class="content">
-        <img src="your-photo.jpg" alt="Oğuzhan Atmaca's Photo">
-        <p>
-            I am passionate about developing innovative AI-driven solutions and collaborating on projects that push the boundaries of technology. Feel free to explore my work or get in touch with me through the links above.
-        </p>
+    <div class="container">
+        <div class="profile-card">
+            <img src="your-photo.jpg" alt="Oğuzhan Atmaca">
+            <p class="bio-text">
+                As a dedicated Electronics and Communication Engineer and ITU alumnus, I possess a robust technical foundation in <strong>Deep Learning, Signal Processing and Information Theory</strong> backed by over 2 years of full-time professional experience. I excel in developing and deploying scalable AI models while integrating DevOps and Software Engineering best practices into the development lifecycle. My technical expertise spans across <strong>Python and React</strong> enabling me to build end-to-end intelligent solutions from backend architecture to dynamic frontends. I bring a multicultural and innovative approach to every project supported by my fluency in English (C1) and proficiency in German (A2) always focusing on the intersection of academic theory and practical software implementation.
+            </p>
+            
+            <div class="badge-container">
+                <span class="badge">Python</span>
+                <span class="badge">React</span>
+                <span class="badge">Deep Learning</span>
+                <span class="badge">DevOps</span>
+                <span class="badge">FastAPI</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Oğuzhan Atmaca. All rights reserved.</p>
+        <p>&copy; 2026 Oğuzhan Atmaca. Powered by AI & Innovation.</p>
     </footer>
+
 </body>
 </html>
