@@ -3,180 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Oğuzhan Atmaca</title>
+    <title>Experience & Education | Oğuzhan Atmaca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --accent: #3b82f6;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        nav {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
-            background-color: #343a40;
-            padding: 10px 0;
         }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+        nav ul li { margin: 0 20px; }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #007bff;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 36px;
-        }
-
-        .content {
-            padding: 40px;
+        .container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 60px auto;
+            padding: 0 20px;
         }
 
-        .subtopic {
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
             margin-bottom: 40px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
         }
 
-        .subtopic h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s;
         }
 
-        .subtopic ul {
-            list-style-type: none;
-            padding: 0;
-        }
+        .card:hover { transform: translateY(-5px); }
 
-        .subtopic ul li {
-            margin-bottom: 20px;
+        .item-header {
             display: flex;
+            justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
-        .subtopic ul li img {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
+        .title-group h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--primary);
         }
 
-        .subtopic ul li strong {
-            font-size: 16px;
-            color: #007bff;
+        .company {
+            font-weight: 600;
+            color: var(--dark);
+            display: block;
+            margin-top: 5px;
         }
 
-        .subtopic ul li p {
-            margin: 5px 0 0 10px;
-            font-size: 14px;
-            line-height: 1.6;
+        .date-location {
+            font-size: 0.85rem;
+            color: var(--gray);
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        ul.details {
+            padding-left: 20px;
+            margin-top: 15px;
+            color: #334155;
+        }
+
+        ul.details li { margin-bottom: 8px; }
+
+        .achievement-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #bfdbfe;
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .achievement-box h4 {
+            margin-top: 0;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #343a40;
-            color: white;
+            padding: 40px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .item-header { flex-direction: column; }
+            .date-location { margin-top: 10px; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html" style="color: var(--accent);">Experience</a></li>
+            <li><a href="projects.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1>About Me</h1>
-    </header>
+    <div class="container">
+        
+        <h2 class="section-title">Professional Experience</h2>
 
-    <div class="content">
-        <!-- Education Background -->
-        <div class="subtopic">
-            <h2>Education Background</h2>
-            <ul>
-                <li>
-                    <img src="itu-logo.jpg" alt="ITU Logo">
-                    <div>
-                        <strong>2019-2024:</strong> Istanbul Technical University, Electronics and Communication Engineering
-                    </div>
-                </li>
-                <li>
-                    <img src="vienna-logo.jpg" alt="Vienna University Logo">
-                    <div>
-                        <strong>2023-2023 (Erasmus):</strong> Vienna Technical University, Electrical and Information Engineering
-                    </div>
-                </li>
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>Young Professional - AI Engineer</h3>
+                    <span class="company">European Patent Office (EPO)</span>
+                </div>
+                <span class="date-location">Sep 2025 - Present | Munich, DE</span>
+            </div>
+            <ul class="details">
+                <li>Developed and launched an internal AI application from scratch to streamline EPC reference retrieval for legal professionals.</li>
+                <li>Engineered end-to-end AI solutions to enhance intellectual property analysis and database interactions.</li>
+                <li>Orchestrated DevOps operations using <strong>Docker and Kubernetes</strong> for scalable cloud infrastructure.</li>
             </ul>
         </div>
 
-        <!-- Work Experience -->
-        <div class="subtopic">
-            <h2>Work Experience</h2>
-            <ul>
-                <li>
-                    <div>
-                        <strong>2024 - Current:</strong> TÜBİTAK BİLGEM, IT and Machine Learning Researcher
-                        <p>▪ Developed advanced deep learning models and working on IT security (Kali Linux, Penetration Tests).</p>
-                        <p>▪ EfficientNet and AlexNet implementation for different datasets.</p>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>2023-2024:</strong> TÜBİTAK BİLGEM, Communication and Machine Learning Part-Time Researcher
-                        <p>▪ Worked on interferences and writing codes in Python to recognize the signal’s noise in channels (EU Project).</p>
-                        <p>▪ Using Matlab, simulated interferences such as single-tone and narrowband signals, and employed Deep Learning algorithms (CNN) to detect these interferences in the channel, achieving a 99% accuracy rate.</p>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>2023-2023:</strong> Vienna University, Edge Computing and IoT Researcher
-                        <p>▪ Conducted research on Sustainable Watershed Management using IoT-driven Artificial Intelligence, worked with Dr. Atakan Aral.</p>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>2022-2022:</strong> Roketsan A.Ş, Embedded Software Intern
-                        <p>▪ Developed embedded software using VHDL (VHSIC Hardware Description Language) to control the rotation of the rocket's wing to the right or left, precisely adjusting the movement with a specific duty cycle.</p>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>2021-2021:</strong> Tüpraş, Software Intern
-                        <p>▪ Developed an innovative idea for the company; Interface design with QT design program and Java codes for problems in business life.</p>
-                    </div>
-                </li>
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>AI Researcher (NLP focus)</h3>
+                    <span class="company">Hesap by Sipay</span>
+                </div>
+                <span class="date-location">May 2025 - Sep 2025 | Istanbul, TR</span>
+            </div>
+            <ul class="details">
+                <li>Conducted advanced NLP research on CV datasets leveraging <strong>BERT-based</strong> architectures.</li>
+                <li>Developed intelligent CV parsers utilizing <strong>LLMs</strong> for structured data extraction.</li>
+                <li>Performed data-driven analysis using SQL, Google Ads, and Analytics.</li>
             </ul>
         </div>
+
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>Machine Learning Researcher</h3>
+                    <span class="company">TÜBİTAK BİLGEM</span>
+                </div>
+                <span class="date-location">Sep 2023 - May 2025 | Istanbul, TR</span>
+            </div>
+            <ul class="details">
+                <li>Developed deep learning-based interference detection for an EU-funded project, achieving <strong>99% accuracy</strong> using CNN models.</li>
+                <li>Optimized <strong>DenseNet, EfficientNet, and AlexNet</strong> for medical AI applications (Diabetic Retinopathy diagnosis).</li>
+                <li>Managed high-GPU workloads on HPC (High-Performance Computing) via SSH automation.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>Research & Engineering Internships</h3>
+                </div>
+            </div>
+            <ul class="details">
+                <li><strong>Vienna University (2022-2023):</strong> IoT-driven AI research for Sustainable Watershed Management with Dr. Atakan Aral.</li>
+                <li><strong>Roketsan A.Ş (2022):</strong> Embedded software development (VHDL) for rocket wing control systems and FPGA optimization.</li>
+                <li><strong>Tüpraş (2021):</strong> Interface design with Qt and Java for industrial problem-solving.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Education</h2>
+
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>M.Sc. Information and Communication Technology</h3>
+                    <span class="company">Friedrich-Alexander University (FAU)</span>
+                </div>
+                <span class="date-location">2025 - Present | Erlangen, DE</span>
+            </div>
+            <p>Focus: AI Engineering Track</p>
+        </div>
+
+        <div class="card">
+            <div class="item-header">
+                <div class="title-group">
+                    <h3>B.Sc. Electronics and Communication Engineering</h3>
+                    <span class="company">Istanbul Technical University (ITU)</span>
+                </div>
+                <span class="date-location">2019 - 2024 | Istanbul, TR</span>
+            </div>
+            <p>GPA: 3.2/4.0 (Honor Degree). Thesis focus: 6G Handover Algorithms and Big Data Traffic Forecasting.</p>
+            <p><em>*Exchange Semester: Technical University of Vienna (TU Wien), 2023.</em></p>
+        </div>
+
+        <div class="achievement-box">
+            <h4>🏆 Prestigious Recognition</h4>
+            <p>My project on <strong>Diabetic Retinopathy detection</strong> was selected among 136 projects across Turkey, receiving a <strong>900,000 ₺ (27,000 €)</strong> funding grant. Recognized as one of the most innovative AI initiatives of 2024.</p>
+        </div>
+
     </div>
 
     <footer>
-        <p>&copy; 2024 Oğuzhan Atmaca. All rights reserved.</p>
+        <p>&copy; 2026 Oğuzhan Atmaca. Built with Passion for AI.</p>
     </footer>
+
 </body>
 </html>
