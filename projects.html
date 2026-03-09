@@ -3,144 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Oğuzhan Atmaca</title>
+    <title>Portfolio & Projects | Oğuzhan Atmaca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --accent: #3b82f6;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
-            background-color: #343a40;
-            padding: 10px 0;
         }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+        nav ul li { margin: 0 20px; }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         header {
             text-align: center;
-            padding: 50px 20px;
-            background-color: #007bff;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
             color: white;
         }
 
         header h1 {
-            font-size: 36px;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1px;
         }
 
-        .projects-container {
+        header p {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 40px;
+            flex-direction: column;
         }
 
-        .project {
-            margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            width: 300px;
-            text-align: center;
-            background-color: white;
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .project img {
+        .project-img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+
+        .project-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .btn-github:hover {
+            color: var(--primary);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #343a40;
-            color: white;
+            padding: 60px 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">Experience</a></li>
+            <li><a href="projects.html" style="color: var(--accent);">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1>Projects</h1>
+        <h1>Selected Projects</h1>
+        <p>A showcase of my work in AI, Signal Processing, and Software Architecture</p>
     </header>
 
-    <!-- Projects -->
-    <div class="projects-container">
-        <div class="project">
-            <img src="assembly-dosbox.jpg" alt="Assembly Rectangular Moving">
-            <h3>Assembly Rectangular Moving in DosBox</h3>
-            <p>Assembly implementation for rectangular object movement in DosBox.</p>
-            <a href="https://github.com/Oxuzhan/Assembly-rectangular-moving-in-DosBox" target="_blank">View on GitHub</a>
+    <div class="projects-grid">
+        
+        <div class="project-card">
+            <img src="diabetic-retinopathy.jpg" alt="Diabetic Retinopathy" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Medical AI</span>
+                </div>
+                <h3>Diabetic Retinopathy Detection</h3>
+                <p>Award-winning hybrid model using EfficientNet and DenseNet architectures. Selected among 136 projects for national funding.</p>
+                <a href="https://github.com/Oxuzhan/Diabetic-retinopathy-in-deep-learning-models-efficientnet-densenet-" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
 
-        <div class="project">
-            <img src="preprocessing-ml.jpg" alt="Preprocessing Parts in ML">
-            <h3>Preprocessing Parts in Machine Learning</h3>
-            <p>Techniques for preprocessing data in machine learning pipelines.</p>
-            <a href="https://github.com/Oxuzhan/Preprocessing-Parts-in-Machine-Learning" target="_blank">View on GitHub</a>
+        <div class="project-card">
+            <img src="cnn-interference.jpg" alt="Interference Detection" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">CNN</span>
+                    <span class="tag">Signal Processing</span>
+                </div>
+                <h3>Interference Detection with CNN</h3>
+                <p>EU-funded project achieving 99% accuracy in real-time signal noise classification for 4G/5G channels.</p>
+                <a href="https://github.com/Oxuzhan/Interference-Detection-with-CNN-Deep-Learning-Algorithm" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
 
-        <div class="project">
-            <img src="deep-learning-app.jpg" alt="Deep Learning Application">
-            <h3>Deep Learning and Machine Learning Application</h3>
-            <p>Applications showcasing deep learning and machine learning techniques.</p>
-            <a href="https://github.com/Oxuzhan/Deep-Learning-and-Machine-Learning-Application" target="_blank">View on GitHub</a>
+        <div class="project-card">
+            <img src="fastapi-app.jpg" alt="FastAPI Application" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">Backend</span>
+                    <span class="tag">FastAPI</span>
+                </div>
+                <h3>Enterprise FastAPI Solutions</h3>
+                <p>Scalable backend architecture for AI model serving, featuring robust API documentation and high-performance endpoints.</p>
+                <a href="https://github.com/Oxuzhan/FastAPI-Application" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
 
-        <div class="project">
-            <img src="cnn-interference.jpg" alt="Interference Detection">
-            <h3>Interference Detection with CNN</h3>
-            <p>A project to detect interference using CNN-based deep learning.</p>
-            <a href="https://github.com/Oxuzhan/Interference-Detection-with-CNN-Deep-Learning-Algorithm" target="_blank">View on GitHub</a>
+        <div class="project-card">
+            <img src="preprocessing-ml.jpg" alt="ML Preprocessing" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">Data Engineering</span>
+                    <span class="tag">Python</span>
+                </div>
+                <h3>ML Pipeline Preprocessing</h3>
+                <p>Comprehensive toolkit for data cleaning, augmentation, and feature engineering for deep learning workflows.</p>
+                <a href="https://github.com/Oxuzhan/Preprocessing-Parts-in-Machine-Learning" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
 
-        <div class="project">
-            <img src="diabetic-retinopathy.jpg" alt="Diabetic Retinopathy Detection">
-            <h3>Diabetic Retinopathy Detection</h3>
-            <p>Hybrid models using EfficientNet and DenseNet for diabetic retinopathy detection.</p>
-            <a href="https://github.com/Oxuzhan/Diabetic-retinopathy-in-deep-learning-models-efficientnet-densenet-" target="_blank">View on GitHub</a>
+        <div class="project-card">
+            <img src="assembly-dosbox.jpg" alt="Assembly Project" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">Low-Level</span>
+                    <span class="tag">Assembly</span>
+                </div>
+                <h3>Assembly Rectangular Moving</h3>
+                <p>Low-level implementation for rectangular object movement in DosBox environment, showcasing memory management skills.</p>
+                <a href="https://github.com/Oxuzhan/Assembly-rectangular-moving-in-DosBox" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
 
-        <div class="project">
-            <img src="fastapi-app.jpg" alt="FastAPI Application">
-            <h3>FastAPI Application</h3>
-            <p>Implementation of FastAPI for enterprise-level solutions.</p>
-            <a href="https://github.com/Oxuzhan/FastAPI-Application" target="_blank">View on GitHub</a>
+        <div class="project-card">
+            <img src="deep-learning-app.jpg" alt="Deep Learning Apps" class="project-img">
+            <div class="project-content">
+                <div class="project-tags">
+                    <span class="tag">Software Engineering</span>
+                    <span class="tag">AI</span>
+                </div>
+                <h3>AI-Driven Applications</h3>
+                <p>A collection of end-to-end applications demonstrating the integration of ML models into functional software products.</p>
+                <a href="https://github.com/Oxuzhan/Deep-Learning-and-Machine-Learning-Application" target="_blank" class="btn-github">View Code on GitHub →</a>
+            </div>
         </div>
+
     </div>
 
     <footer>
-        <p>&copy; 2024 Oğuzhan Atmaca. All rights reserved.</p>
+        <p>&copy; 2026 Oğuzhan Atmaca. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
