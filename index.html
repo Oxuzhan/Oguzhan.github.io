@@ -35,7 +35,7 @@
             cursor: default;
         }
 
-        /* 1. Gelişmiş Canvas Arka Planı (CSS ile konumlandırma) */
+        /* Gelişmiş Canvas Arka Planı */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -151,12 +151,12 @@
             max-width: 950px;
             margin: 0 auto 100px;
             padding: 0 20px;
-            perspective: 2000px; /* Derinlik algısını artırdık */
+            perspective: 2000px; 
             z-index: 10;
             position: relative;
         }
 
-        /* 2. Gelişmiş Holographic 3D Profil Kartı */
+        /* Holographic 3D Profil Kartı */
         .profile-card {
             background: var(--card-bg);
             backdrop-filter: blur(25px);
@@ -168,7 +168,7 @@
             text-align: center;
             transform-style: preserve-3d;
             position: relative;
-            overflow: hidden; /* Işık yansıması kartın dışına taşmasın diye */
+            overflow: hidden; 
         }
 
         /* Hologram Işık Yansıması (Glare) Efekti */
@@ -191,7 +191,7 @@
             width: 180px;
             height: 180px;
             margin: 0 auto 40px;
-            transform: translateZ(80px); /* En çok fırlayan element */
+            transform: translateZ(80px); 
             transform-style: preserve-3d;
         }
 
@@ -219,14 +219,16 @@
 
         @keyframes spin { 100% { transform: translateZ(-10px) rotate(360deg); } }
 
+        /* METİN DÜZENLEMESİ BURADA YAPILDI: justify yerine left kullanıldı ve satır aralığı optimize edildi */
         .bio-text {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #cbd5e1;
-            text-align: justify;
+            text-align: left; /* BOŞLUK SORUNUNU ÇÖZEN KISIM */
             margin-bottom: 50px;
             transform: translateZ(40px);
-            line-height: 1.9;
+            line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            padding: 0 20px; /* Kenarlardan biraz nefes alması için */
         }
 
         .bio-text strong {
@@ -236,7 +238,7 @@
             display: inline-block;
         }
 
-        /* 3. Manyetik Butonlar (Magnetic Badges) */
+        /* Manyetik Butonlar (Magnetic Badges) */
         .badge-container {
             display: flex;
             justify-content: center;
@@ -249,7 +251,7 @@
         .magnetic-wrap {
             position: relative;
             display: inline-block;
-            padding: 10px; /* Fare yakalama alanı */
+            padding: 10px; 
         }
 
         .badge {
@@ -267,7 +269,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s ease-out;
             cursor: pointer;
-            pointer-events: none; /* Javascript içindeki wrap halledecek */
+            pointer-events: none; 
         }
 
         .magnetic-wrap:hover .badge {
@@ -294,7 +296,7 @@
             header h1 { font-size: 3rem; }
             .profile-card { padding: 40px 20px; }
             nav ul { gap: 20px; flex-wrap: wrap; }
-            .bio-text { font-size: 1.05rem; }
+            .bio-text { font-size: 1.05rem; text-align: left; padding: 0; }
             .avatar-container { width: 140px; height: 140px; }
         }
     </style>
@@ -329,7 +331,7 @@
             </div>
 
             <p class="bio-text">
-                As a dedicated Electronics and Communication Engineer and ITU alumnus, I possess a robust technical foundation in <strong>Deep Learning, Signal Processing, and Information Theory</strong> backed by over 2 years of full-time professional experience. I excel in developing and deploying scalable AI models while integrating DevOps and Software Engineering best practices into the development lifecycle. My technical expertise spans across <strong>Python and React</strong> enabling me to build end-to-end intelligent solutions from backend architecture to dynamic frontends. I bring a multicultural and innovative approach to every project supported by my fluency in English (C1) and proficiency in German (A2) always focusing on the intersection of academic theory and practical software implementation.
+                As a dedicated Electronics and Communication Engineer and ITU alumnus, currently pursuing an <strong>M.Sc. in Information and Communication Technology (AI Track) at FAU</strong>, I possess a robust technical foundation in <strong>Deep Learning, Signal Processing, and Information Theory</strong> backed by over 2 years of full-time professional experience. I excel in developing and deploying scalable AI models while integrating DevOps and Software Engineering best practices into the development lifecycle. My technical expertise spans across <strong>Python and React</strong>, enabling me to build end-to-end intelligent solutions from backend architecture to dynamic frontends. I bring a multicultural and innovative approach to every project, supported by my fluency in English (C1) and proficiency in German, always focusing on the intersection of academic theory and practical software implementation.
             </p>
             
             <div class="badge-container">
@@ -354,18 +356,15 @@
             const x = e.clientX - rect.left; 
             const y = e.clientY - rect.top;  
             
-            // Glare (Işık Yansıması) için CSS değişkenlerini güncelle
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
 
-            // 3D Tilt Hesaplaması (Daha yumuşak ve pürüzsüz)
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
             const rotateX = ((y - centerY) / centerY) * -12;
             const rotateY = ((x - centerX) / centerX) * 12;
             
-            // transform style update
             card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             card.style.transition = `transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
         });
@@ -386,16 +385,13 @@
                 const h = rect.width / 2;
                 const v = rect.height / 2;
                 
-                // Farenin buton merkezine olan uzaklığı
                 const x = e.clientX - rect.left - h;
                 const y = e.clientY - rect.top - v;
                 
-                // Butonu farenin yönüne doğru hafifçe çek (manyetik etki)
                 badge.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
             });
 
             magnet.addEventListener('mouseleave', () => {
-                // Fare ayrılınca yaylanarak (bouncy) geri dönsün
                 badge.style.transform = `translate(0px, 0px)`;
                 badge.style.transition = `transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
             });
@@ -405,7 +401,7 @@
             });
         });
 
-        // --- 3. CANVAS PARTICLE AĞI (SİNYAL İŞLEME VİBE'I) ---
+        // --- 3. CANVAS PARTICLE AĞI ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray = [];
@@ -413,7 +409,6 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Fareyi takip eden gizli bir bağlantı noktası
         let mouse = { x: null, y: null, radius: 150 };
 
         window.addEventListener('mousemove', (e) => {
@@ -434,7 +429,6 @@
                 ctx.fill();
             }
             update() {
-                // Duvarlardan sekme
                 if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
                 if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
                 
@@ -475,12 +469,11 @@
                     }
                 }
                 
-                // Fare ile bağlantı (Mouse Interaction)
                 if (mouse.x && mouse.y) {
                     let mouseDist = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x))
                                   + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
                     if (mouseDist < mouse.radius * mouse.radius) {
-                        ctx.strokeStyle = `rgba(34, 211, 238, 0.4)`; // Mavi/Neon bağlantı
+                        ctx.strokeStyle = `rgba(34, 211, 238, 0.4)`; 
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
