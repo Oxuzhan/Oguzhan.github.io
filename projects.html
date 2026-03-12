@@ -4,29 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio & Projects | Oğuzhan Atmaca</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
             --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --accent: #3b82f6;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--dark);
+            color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
         }
 
+        /* 3D Hareketli Arka Plan Objeleri */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite alternate ease-in-out;
+        }
+        .shape1 {
+            width: 400px; height: 400px;
+            background: rgba(59, 130, 246, 0.2);
+            top: -100px; left: -100px;
+        }
+        .shape2 {
+            width: 500px; height: 500px;
+            background: rgba(139, 92, 246, 0.15);
+            bottom: -200px; right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Glassmorphism Navbar */
         nav {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -34,139 +71,207 @@
 
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
+            gap: 40px;
         }
 
-        nav ul li { margin: 0 20px; }
-
         nav ul li a {
-            color: white;
+            color: var(--text-gray);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-light);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -5px; left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
         }
 
         header {
             text-align: center;
             padding: 80px 20px 40px;
-            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
-            color: white;
+            animation: fadeInDown 1s ease-out forwards;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
         }
 
         header p {
-            color: #94a3b8;
-            margin-top: 10px;
-            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
+        /* Projects Grid - 3D Perspective Added */
         .projects-grid {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 40px auto 80px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 40px;
             padding: 0 20px;
+            perspective: 1500px; /* Bütün grid için derinlik algısı */
         }
 
+        /* 3D Glassmorphism Project Card */
         .project-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+            /* Transform style crucial for 3D children */
+            transform-style: preserve-3d; 
+            transition: transform 0.1s; 
+            padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        /* İç Elementlerin 3D Pop-Out Ayarları */
+        .project-img-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transform: translateZ(40px); /* Resim havada durur */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
         .project-img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            border-bottom: 1px solid #f1f5f9;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.08); /* Resim içine zoom yapar */
         }
 
         .project-content {
-            padding: 25px;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
         }
 
         .project-tags {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 15px;
             flex-wrap: wrap;
+            transform: translateZ(30px); /* Etiketler öne çıkar */
         }
 
         .tag {
             font-size: 0.75rem;
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            padding: 6px 12px;
+            border-radius: 20px;
             font-weight: 600;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .project-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
-            color: var(--dark);
+            margin: 0 0 15px 0;
+            font-size: 1.4rem;
+            color: #f8fafc;
+            transform: translateZ(50px); /* Başlık en çok fırlayan element */
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .project-card p {
-            color: var(--gray);
+            color: #cbd5e1;
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            transform: translateZ(20px);
+            line-height: 1.7;
         }
 
+        /* 3D GitHub Butonu */
         .btn-github {
             display: inline-flex;
             align-items: center;
-            color: var(--dark);
+            gap: 8px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            transform: translateZ(60px); /* Buton sana en yakın olan şey */
+            align-self: flex-start;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
         }
 
         .btn-github:hover {
-            color: var(--primary);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.6);
+            background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
         }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
-            color: var(--gray);
-            font-size: 0.9rem;
+            padding: 40px;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
-            .projects-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; gap: 30px; }
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">Experience</a></li>
-            <li><a href="projects.html" style="color: var(--accent);">Portfolio</a></li>
+            <li><a href="projects.html" class="active">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -178,81 +283,93 @@
 
     <div class="projects-grid">
         
-        <div class="project-card">
-            <img src="diabetic-retinopathy.jpg" alt="Diabetic Retinopathy" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="diabetic-retinopathy.jpg" alt="Diabetic Retinopathy" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">Deep Learning</span>
-                    <span class="tag">Medical AI</span>
+                    <span class="tag"><i class="fa-solid fa-brain"></i> Deep Learning</span>
+                    <span class="tag"><i class="fa-solid fa-notes-medical"></i> Medical AI</span>
                 </div>
                 <h3>Diabetic Retinopathy Detection</h3>
                 <p>Award-winning hybrid model using EfficientNet and DenseNet architectures. Selected among 136 projects for national funding.</p>
-                <a href="https://github.com/Oxuzhan/Diabetic-retinopathy-in-deep-learning-models-efficientnet-densenet-" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/Diabetic-retinopathy-in-deep-learning-models-efficientnet-densenet-" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <img src="cnn-interference.jpg" alt="Interference Detection" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="cnn-interference.jpg" alt="Interference Detection" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">CNN</span>
-                    <span class="tag">Signal Processing</span>
+                    <span class="tag"><i class="fa-solid fa-network-wired"></i> CNN</span>
+                    <span class="tag"><i class="fa-solid fa-wave-square"></i> Signal Processing</span>
                 </div>
                 <h3>Interference Detection with CNN</h3>
                 <p>EU-funded project achieving 99% accuracy in real-time signal noise classification for 4G/5G channels.</p>
-                <a href="https://github.com/Oxuzhan/Interference-Detection-with-CNN-Deep-Learning-Algorithm" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/Interference-Detection-with-CNN-Deep-Learning-Algorithm" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <img src="fastapi-app.jpg" alt="FastAPI Application" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="fastapi-app.jpg" alt="FastAPI Application" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">Backend</span>
-                    <span class="tag">FastAPI</span>
+                    <span class="tag"><i class="fa-solid fa-server"></i> Backend</span>
+                    <span class="tag"><i class="fa-solid fa-bolt"></i> FastAPI</span>
                 </div>
                 <h3>Enterprise FastAPI Solutions</h3>
                 <p>Scalable backend architecture for AI model serving, featuring robust API documentation and high-performance endpoints.</p>
-                <a href="https://github.com/Oxuzhan/FastAPI-Application" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/FastAPI-Application" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <img src="preprocessing-ml.jpg" alt="ML Preprocessing" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="preprocessing-ml.jpg" alt="ML Preprocessing" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">Data Engineering</span>
-                    <span class="tag">Python</span>
+                    <span class="tag"><i class="fa-solid fa-database"></i> Data Eng</span>
+                    <span class="tag"><i class="fa-brands fa-python"></i> Python</span>
                 </div>
                 <h3>ML Pipeline Preprocessing</h3>
                 <p>Comprehensive toolkit for data cleaning, augmentation, and feature engineering for deep learning workflows.</p>
-                <a href="https://github.com/Oxuzhan/Preprocessing-Parts-in-Machine-Learning" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/Preprocessing-Parts-in-Machine-Learning" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <img src="assembly-dosbox.jpg" alt="Assembly Project" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="assembly-dosbox.jpg" alt="Assembly Project" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">Low-Level</span>
-                    <span class="tag">Assembly</span>
+                    <span class="tag"><i class="fa-solid fa-microchip"></i> Low-Level</span>
+                    <span class="tag"><i class="fa-solid fa-gear"></i> Assembly</span>
                 </div>
                 <h3>Assembly Rectangular Moving</h3>
                 <p>Low-level implementation for rectangular object movement in DosBox environment, showcasing memory management skills.</p>
-                <a href="https://github.com/Oxuzhan/Assembly-rectangular-moving-in-DosBox" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/Assembly-rectangular-moving-in-DosBox" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <img src="deep-learning-app.jpg" alt="Deep Learning Apps" class="project-img">
+        <div class="project-card tilt-item">
+            <div class="project-img-container">
+                <img src="deep-learning-app.jpg" alt="Deep Learning Apps" class="project-img">
+            </div>
             <div class="project-content">
                 <div class="project-tags">
-                    <span class="tag">Software Engineering</span>
-                    <span class="tag">AI</span>
+                    <span class="tag"><i class="fa-solid fa-code"></i> Software Eng</span>
+                    <span class="tag"><i class="fa-solid fa-robot"></i> AI</span>
                 </div>
                 <h3>AI-Driven Applications</h3>
                 <p>A collection of end-to-end applications demonstrating the integration of ML models into functional software products.</p>
-                <a href="https://github.com/Oxuzhan/Deep-Learning-and-Machine-Learning-Application" target="_blank" class="btn-github">View Code on GitHub →</a>
+                <a href="https://github.com/Oxuzhan/Deep-Learning-and-Machine-Learning-Application" target="_blank" class="btn-github"><i class="fa-brands fa-github"></i> View Code</a>
             </div>
         </div>
 
@@ -262,5 +379,39 @@
         <p>&copy; 2026 Oğuzhan Atmaca. All rights reserved.</p>
     </footer>
 
+    <script>
+        const cards = document.querySelectorAll('.tilt-item');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Dönüş açılarını hesapla
+                const rotateX = ((y - centerY) / centerY) * -15; // Maksimum 15 derece
+                const rotateY = ((x - centerX) / centerX) * 15;
+                
+                // Kartı 3D döndür ve öne çıkar
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.borderColor = 'rgba(96, 165, 250, 0.4)';
+                card.style.zIndex = '10'; // Hover yapılan kart üste çıksın
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.transition = `transform 0.5s ease, border-color 0.5s ease`;
+                card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                card.style.zIndex = '1';
+            });
+
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = `transform 0.1s ease`; // Girerken hızlı tepki
+            });
+        });
+    </script>
 </body>
 </html>
