@@ -123,22 +123,8 @@
             font-size: 1.2rem;
             color: var(--text-gray);
             max-width: 600px;
-            margin: 0 auto 15px;
+            margin: 0 auto;
         }
-
-        .location-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.05);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .location-tag i { color: #f87171; }
 
         /* 3D Card Container */
         .container {
@@ -194,26 +180,30 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            transform: translateZ(40px); /* 3D Pop-out */
+            transform: translateZ(40px); /* Ana karttan öne çıkar */
+            transform-style: preserve-3d; /* İçindeki yetenek butonlarının da 3D hareket etmesine izin verir */
         }
 
         .badge {
             background: rgba(59, 130, 246, 0.1);
             color: #93c5fd;
-            padding: 8px 20px;
+            padding: 10px 22px;
             border-radius: 25px;
             font-size: 0.95rem;
             font-weight: 600;
             border: 1px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-            cursor: default;
+            /* Bouncy (yaylanma) efekti veren özel transition */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background 0.4s ease;
+            cursor: pointer;
+            transform: translateZ(0px) scale(1);
         }
 
+        /* Hover olunduğunda 3D olarak sana doğru fırlama efekti */
         .badge:hover {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.25);
             border-color: #3b82f6;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            transform: translateZ(60px) translateY(-5px) scale(1.15); /* Z ekseninde sana yaklaşır, Y ekseninde yukarı çıkar, hafif büyür */
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
             color: white;
         }
 
@@ -236,6 +226,7 @@
             .profile-card { padding: 30px 20px; }
             nav ul { gap: 15px; flex-wrap: wrap; }
             .bio-text { text-align: left; font-size: 1.05rem; }
+            .badge:hover { transform: translateY(-5px) scale(1.05); /* Mobilde 3D efekti kısıtlanır */ }
         }
     </style>
 </head>
@@ -256,9 +247,6 @@
     <header>
         <h1>Oğuzhan Atmaca</h1>
         <p>Deep Learning | Signal Processing | Software Engineering</p>
-        <div class="location-tag">
-            <i class="fa-solid fa-location-dot"></i> Munich, Germany
-        </div>
     </header>
 
     <div class="container">
@@ -270,10 +258,9 @@
             
             <div class="badge-container">
                 <span class="badge"><i class="fa-brands fa-python"></i> Python</span>
-                <span class="badge"><i class="fa-brands fa-react"></i> React</span>
                 <span class="badge"><i class="fa-solid fa-brain"></i> Deep Learning</span>
                 <span class="badge"><i class="fa-solid fa-server"></i> DevOps</span>
-                <span class="badge"><i class="fa-solid fa-bolt"></i> FastAPI</span>
+                <span class="badge"><i class="fa-solid fa-plug"></i> API</span>
             </div>
         </div>
     </div>
