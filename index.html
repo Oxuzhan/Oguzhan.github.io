@@ -219,23 +219,23 @@
 
         @keyframes spin { 100% { transform: translateZ(-10px) rotate(360deg); } }
 
-        /* METİN DÜZENLEMESİ BURADA YAPILDI: justify yerine left kullanıldı ve satır aralığı optimize edildi */
+        /* YENİ METİN DÜZENİ: Akıcı ve sorunsuz kelime kaydırma */
         .bio-text {
             font-size: 1.15rem;
             color: #cbd5e1;
-            text-align: left; /* BOŞLUK SORUNUNU ÇÖZEN KISIM */
+            text-align: left;
             margin-bottom: 50px;
             transform: translateZ(40px);
             line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            padding: 0 20px; /* Kenarlardan biraz nefes alması için */
+            padding: 0 10px; 
+            word-wrap: break-word; /* Kelimelerin taşmasını engeller */
         }
 
         .bio-text strong {
-            color: white;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
+            color: #ffffff;
+            font-weight: 700;
+            /* inline-block KODU BURADAN KALDIRILDI - SORUN ÇÖZÜLDÜ */
         }
 
         /* Manyetik Butonlar (Magnetic Badges) */
